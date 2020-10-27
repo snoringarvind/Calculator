@@ -17,10 +17,11 @@ for(var i=0; i<arr_nos.length; i++){
 for(var j=0; j<arr_operators.length; j++){
     var button2=document.createElement('button');
     button2.id="op"+j;
-    button2.className='number';
+    button2.className='operator';
     button2.textContent=arr_operators[j];
     row.appendChild(button2);
 }
+
 
 // get number values
 
@@ -29,58 +30,18 @@ for(var k=0; k<number.length;k++){
     number[k].addEventListener('click',ex1);
 }
 
-var a='';
-var b='';
-var c='';
-
+var a=''
 function ex1(e){
-    var t=e.target;
-    var x=e.target.textContent;
-    c+=x;
-    document.querySelector('.top').textContent=c;
-    
-    if (isNaN(x)==false){
-        a+=x;
-        a=parseInt(a);
-    }else if (isNaN(x)==true && (t.id!='op4')){
-        b=x;
-        q=a;
-        a=0;
-        
-    }
-    
+    x=e.target.textContent;
+    a+=x;
+    return a
 }
 
-document.querySelector('#op4').addEventListener('click',equal);
+document.querySelector('.operator').addEventListener('click',operate);
 
-var ans;
-function equal(){
-    switch(b){
-        case '/':
-            ans=q/a;
-            q,a=0;
-            break;
-        case '-':
-            ans=q-a;
-            q,a=0;
-            break;
-        case '*':
-            ans=q*a;
-            q,a=0;
-            break;
-        case '+':
-            ans=q+a;
-            q,a=0;
-            break;
-    }
-    console.log(ans);
-    document.querySelector('.bottom').textContent=ans;
-}
-
-document.querySelector('#op5').addEventListener('click',reset);
-
-function reset(){
-    c='';
-    document.querySelector('.top').textContent='';
-    document.querySelector('.bottom').textContent='';
+var b='';
+function operate(e){
+    operator=e.target.textContent;
+    // b=a;
+    console.log(a);
 }
